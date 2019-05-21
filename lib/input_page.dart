@@ -4,11 +4,12 @@ import 'ReusableCard.dart';
 import 'ReusableImageTextCard.dart';
 import 'Constants.dart';
 import 'RoundIconButton.dart';
+import 'results_page.dart';
 
 const bottomContainerHeight = 80.0;
 const reusableCardBackgroundColorActive = Color(0xFF1D1E33);
 const reusableCardBackgroundColorInactive = Color(0xFF111328);
-const bottomContainerColour = /*Color(0xffeb1555)*/ Colors.blueGrey;
+const bottomContainerColour = Color(0xffeb1555);
 
 enum Gender { male, female }
 
@@ -210,11 +211,31 @@ class _InputPageState extends State<InputPage> {
               ],
             ),
           ),
-          Container(
-            color: bottomContainerColour,
-            margin: EdgeInsets.only(top: 10.0),
-            width: double.infinity,
-            height: bottomContainerHeight,
+          GestureDetector(
+            onTap: () {
+              setState(() {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return ResultsPage();
+                    },
+                  ),
+                );
+              });
+            },
+            child: Container(
+              child: Center(
+                child: Text(
+                  'CALCULATE',
+                  style: TextStyle(fontSize: 30.0, fontWeight: FontWeight.w500),
+                ),
+              ),
+              color: bottomContainerColour,
+              margin: EdgeInsets.only(top: 10.0),
+              width: double.infinity,
+              height: bottomContainerHeight,
+            ),
           )
         ],
       ),
