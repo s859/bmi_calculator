@@ -10,4 +10,12 @@ const labelTextStyle = TextStyle(
   color: Color(0xff8d8e98),
 );
 
-const numberTextStyle = TextStyle(fontSize: 50.0, fontWeight: FontWeight.w900);
+const numberTextStyle = TextStyle(
+  fontSize: 50.0,
+  fontWeight: FontWeight.w900,
+);
+
+const kLargeButtonTextStyle = TextStyle(
+  fontSize: 30.0,
+  fontWeight: FontWeight.w500,
+);

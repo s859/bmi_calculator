@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'ReusableCard.dart';
-import 'ReusableImageTextCard.dart';
-import 'Constants.dart';
-import 'RoundIconButton.dart';
-import 'results_page.dart';
+import 'package:bmi_calculator/components/ReusableCard.dart';
+import 'package:bmi_calculator/components/ReusableImageTextCard.dart';
+import 'package:bmi_calculator/Constants.dart';
+import 'package:bmi_calculator/components/RoundIconButton.dart';
+import 'package:bmi_calculator/components/bottom_button.dart';
+import 'package:bmi_calculator/screens/results_page.dart';
 
 const bottomContainerHeight = 80.0;
 const reusableCardBackgroundColorActive = Color(0xFF1D1E33);
@@ -211,31 +212,18 @@ class _InputPageState extends State<InputPage> {
               ],
             ),
           ),
-          GestureDetector(
-            onTap: () {
-              setState(() {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return ResultsPage();
-                    },
-                  ),
-                );
-              });
-            },
-            child: Container(
-              child: Center(
-                child: Text(
-                  'CALCULATE',
-                  style: TextStyle(fontSize: 30.0, fontWeight: FontWeight.w500),
+          BottomButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return ResultsPage();
+                  },
                 ),
-              ),
-              color: bottomContainerColour,
-              margin: EdgeInsets.only(top: 10.0),
-              width: double.infinity,
-              height: bottomContainerHeight,
-            ),
+              );
+            },
+            labelText: 'CALCULATE',
           )
         ],
       ),

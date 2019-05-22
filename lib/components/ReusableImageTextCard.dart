@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'Constants.dart';
+import 'package:bmi_calculator/Constants.dart';
 
 class ReusableImageTextCard extends StatelessWidget {
   final IconData iconData;
