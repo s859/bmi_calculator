@@ -6,6 +6,7 @@ import 'package:bmi_calculator/Constants.dart';
 import 'package:bmi_calculator/components/RoundIconButton.dart';
 import 'package:bmi_calculator/components/bottom_button.dart';
 import 'package:bmi_calculator/screens/results_page.dart';
+import 'package:bmi_calculator/CalculatorBrain.dart';
 
 const bottomContainerHeight = 80.0;
 const reusableCardBackgroundColorActive = Color(0xFF1D1E33);
@@ -214,11 +215,15 @@ class _InputPageState extends State<InputPage> {
           ),
           BottomButton(
             onPressed: () {
+              int bmi = CalculatorBrain(height: height, weight: weight)
+                  .bmiCalculate();
               Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) {
-                    return ResultsPage();
+                    return ResultsPage(
+                      bmi: bmi,
+                    );
                   },
                 ),
               );
