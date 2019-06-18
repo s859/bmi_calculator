@@ -14,7 +14,7 @@ class ReusableImageTextCard extends StatelessWidget {
       children: <Widget>[
         Icon(
           iconData,
-          size: 80.0,
+          size: 60.0,
         ),
         SizedBox(
           width: double.infinity,
@@ -22,7 +22,7 @@ class ReusableImageTextCard extends StatelessWidget {
         ),
         Text(
           text,
-          style: labelTextStyle,
+          style: kLabelTextStyle,
         ),
       ],
     );

@@ -1,5 +1,9 @@
+// This is Steve Zwart's implementation of the bmi_flutter_calculator from the
+// London app brewery Flutter bootcamp class.
+// I use Imperial measurements (pounds and height in inches)
+
 import 'package:flutter/material.dart';
-import 'package:bmi_calculator/screens/input_page.dart';
+import 'screens/input_page.dart';
 
 void main() => runApp(BMICalculator());
 
@@ -10,10 +14,6 @@ class BMICalculator extends StatelessWidget {
       theme: ThemeData.dark().copyWith(
         primaryColor: Color(0xFF0A0E21),
         scaffoldBackgroundColor: Color(0xFF0A0E21),
-//        accentColor: Colors.grey[850],
-//        textTheme: TextTheme(
-//          body1: TextStyle(color: Colors.white),
-//        ),
       ),
       home: InputPage(),
     );

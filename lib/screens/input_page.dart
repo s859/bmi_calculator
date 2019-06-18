@@ -8,12 +8,10 @@ import 'package:bmi_calculator/components/bottom_button.dart';
 import 'package:bmi_calculator/screens/results_page.dart';
 import 'package:bmi_calculator/CalculatorBrain.dart';
 
-const bottomContainerHeight = 80.0;
+const bottomContainerHeight = 70.0;
 const reusableCardBackgroundColorActive = Color(0xFF1D1E33);
 const reusableCardBackgroundColorInactive = Color(0xFF111328);
 const bottomContainerColour = Color(0xffeb1555);
-
-enum Gender { male, female }
 
 class InputPage extends StatefulWidget {
   @override
@@ -21,16 +19,18 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
-  Gender selectedGender;
-  int height = 170;
-  int weight = 50;
-  int age = 25;
+  String gender = "F";
+  int height = 67; // 5' 7"
+  int weight = 140;
+  int age = 35;
+  int displayFeet = 5;
+  int displayInches = 7;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('BMI CALCULATOR'),
+        title: Text('BMI Calculator'),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -40,7 +40,7 @@ class _InputPageState extends State<InputPage> {
               children: <Widget>[
                 Expanded(
                   child: ReusableCard(
-                    colour: selectedGender == Gender.male
+                    colour: gender == 'M'
                         ? reusableCardBackgroundColorActive
                         : reusableCardBackgroundColorInactive,
                     carChild: ReusableImageTextCard(
@@ -49,14 +49,14 @@ class _InputPageState extends State<InputPage> {
                     ),
                     onPress: () {
                       setState(() {
-                        selectedGender = Gender.male;
+                        gender = 'M';
                       });
                     },
                   ),
                 ),
                 Expanded(
                   child: ReusableCard(
-                    colour: selectedGender == Gender.female
+                    colour: gender == 'F'
                         ? reusableCardBackgroundColorActive
                         : reusableCardBackgroundColorInactive,
                     carChild: ReusableImageTextCard(
@@ -65,7 +65,7 @@ class _InputPageState extends State<InputPage> {
                     ),
                     onPress: () {
                       setState(() {
-                        selectedGender = Gender.female;
+                        gender = 'F';
                       });
                     },
                   ),
@@ -81,20 +81,36 @@ class _InputPageState extends State<InputPage> {
                 children: <Widget>[
                   Text(
                     'HEIGHT',
-                    style: labelTextStyle,
+                    style: kLabelTextStyle,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.baseline,
                     textBaseline: TextBaseline.alphabetic,
                     children: <Widget>[
+//                      Text(
+//                        height.toString(),
+//                        style: kNumberTextStyle,
+//                      ),
+//                      Text(
+//                        'inches',
+//                        style: kLabelTextStyle,
+//                      ),
                       Text(
-                        height.toString(),
-                        style: numberTextStyle,
+                        displayFeet.toString(),
+                        style: kNumberTextStyle,
                       ),
                       Text(
-                        'cm',
-                        style: labelTextStyle,
+                        " feet ",
+                        style: kLabelTextStyle,
+                      ),
+                      Text(
+                        displayInches.toString(),
+                        style: kNumberTextStyle,
+                      ),
+                      Text(
+                        ' inches',
+                        style: kLabelTextStyle,
                       ),
                     ],
                   ),
@@ -107,14 +123,16 @@ class _InputPageState extends State<InputPage> {
                             RoundSliderThumbShape(enabledThumbRadius: 15.0),
                         overlayColor: Color(0x29eb1555),
                         overlayShape:
-                            RoundSliderOverlayShape(overlayRadius: 25.0)),
+                            RoundSliderOverlayShape(overlayRadius: 28.0)),
                     child: Slider(
                       value: height.toDouble(),
-                      min: 90.0,
-                      max: 220.0,
+                      min: 50.0,
+                      max: 88.0,
                       onChanged: (double newValue) {
                         setState(() {
                           height = newValue.round();
+                          displayFeet = height ~/ 12;
+                          displayInches = height % 12;
                         });
                       },
                     ),
@@ -134,11 +152,11 @@ class _InputPageState extends State<InputPage> {
                       children: <Widget>[
                         Text(
                           'WEIGHT',
-                          style: labelTextStyle,
+                          style: kLabelTextStyle,
                         ),
                         Text(
                           weight.toString(),
-                          style: numberTextStyle,
+                          style: kNumberTextStyle,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -147,7 +165,7 @@ class _InputPageState extends State<InputPage> {
                               icon: FontAwesomeIcons.minus,
                               onPress: () {
                                 setState(() {
-                                  weight--;
+                                  weight = weight - 3;
                                 });
                               },
                             ),
@@ -158,49 +176,7 @@ class _InputPageState extends State<InputPage> {
                               icon: FontAwesomeIcons.plus,
                               onPress: () {
                                 setState(() {
-                                  weight++;
-                                });
-                              },
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: ReusableCard(
-                    colour: reusableCardBackgroundColorActive,
-                    carChild: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Text(
-                          'AGE',
-                          style: labelTextStyle,
-                        ),
-                        Text(
-                          age.toString(),
-                          style: numberTextStyle,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            RoundIconButton(
-                              icon: FontAwesomeIcons.minus,
-                              onPress: () {
-                                setState(() {
-                                  age--;
-                                });
-                              },
-                            ),
-                            SizedBox(
-                              width: 10.0,
-                            ),
-                            RoundIconButton(
-                              icon: FontAwesomeIcons.plus,
-                              onPress: () {
-                                setState(() {
-                                  age++;
+                                  weight = weight + 3;
                                 });
                               },
                             ),
@@ -223,12 +199,14 @@ class _InputPageState extends State<InputPage> {
                   builder: (context) {
                     return ResultsPage(
                       bmi: bmi,
+                      gender: gender,
+                      height: height,
                     );
                   },
                 ),
               );
             },
-            labelText: 'CALCULATE',
+            labelText: 'Calculate',
           )
         ],
       ),

@@ -22,11 +22,11 @@ class BottomButton extends StatelessWidget {
             style: kLargeButtonTextStyle,
           ),
         ),
-        color: bottomContainerColour,
-        margin: EdgeInsets.only(top: 10.0),
-        padding: EdgeInsets.only(bottom: 10.0),
+        color: kBottomContainerColour,
+        margin: EdgeInsets.only(top: 8.0),
+        padding: EdgeInsets.only(bottom: 8.0),
         width: double.infinity,
-        height: bottomContainerHeight,
+        height: kBottomContainerHeight,
       ),
     );
   }
