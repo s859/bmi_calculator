@@ -22,7 +22,7 @@ const kLargeButtonTextStyle = TextStyle(
 
 // maps from MetLife
 final Map<int, List<String>> femaleWeightRange = {
-  // data available from 4'10 to 6'0", add 1" for shoes
+  // data available from 4'9" to 5'11", subtract 1" for shoes
   58: ["102 to 111", "109 to 121", "118 to 131"],
   59: ["103 to 113", "111 to 123", "120 to 134"],
   60: ["104 to 115", "113 to 126", "122 to 137"],
@@ -41,7 +41,7 @@ final Map<int, List<String>> femaleWeightRange = {
 };
 
 final Map<int, List<String>> maleWeightRange = {
-  // data available from 5'2" to 6'4", add 1" for shoes
+  // data available from 5'1" to 6'3", add 1" for shoes
   62: ["128 to 134", "131 to 141", "138 to 150"],
   63: ["130 to 136", "133 to 143", "140 to 153"],
   64: ["132 to 138", "135 to 145", "142 to 156"],

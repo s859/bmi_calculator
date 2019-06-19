@@ -68,10 +68,10 @@ class CalculatorBrain {
 
     String weightFromTable;
     String rangeMsg;
-
+    print(height);
     if (gender == 'M') {
       if (height < 61 || height > 75) {
-        rangeMsg = "Unavailable for your height.";
+        rangeMsg = '''Available for men from 5'1" to 6'3".''';
       } else {
         weightFromTable = maleWeightRange[height + 1][0];
         rangeMsg = "Small frame $weightFromTable lbs, ";
@@ -83,7 +83,7 @@ class CalculatorBrain {
     } else {
       // female
       if (height < 57 || height > 71) {
-        rangeMsg = "Unavailable for your height.";
+        rangeMsg = '''Available for women from 4'9" to 5'11".''';
       } else {
         weightFromTable = femaleWeightRange[height + 1][0];
         rangeMsg = "Small frame $weightFromTable lbs, ";
