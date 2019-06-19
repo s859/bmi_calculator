@@ -163,20 +163,50 @@ class _InputPageState extends State<InputPage> {
                           children: <Widget>[
                             RoundIconButton(
                               icon: FontAwesomeIcons.minus,
+                              iconSize: 38.0,
+                              boxSize: 60.0,
                               onPress: () {
                                 setState(() {
-                                  weight = weight - 3;
+                                  weight = weight - 5;
                                 });
                               },
                             ),
                             SizedBox(
-                              width: 10.0,
+                              width: 15.0,
+                            ),
+                            RoundIconButton(
+                              icon: FontAwesomeIcons.minus,
+                              iconSize: 24.0,
+                              boxSize: 36.0,
+                              onPress: () {
+                                setState(() {
+                                  weight = weight - 1;
+                                });
+                              },
+                            ),
+                            SizedBox(
+                              width: 15.0,
                             ),
                             RoundIconButton(
                               icon: FontAwesomeIcons.plus,
+                              iconSize: 24.0,
+                              boxSize: 36.0,
                               onPress: () {
                                 setState(() {
-                                  weight = weight + 3;
+                                  weight = weight + 1;
+                                });
+                              },
+                            ),
+                            SizedBox(
+                              width: 15.0,
+                            ),
+                            RoundIconButton(
+                              icon: FontAwesomeIcons.plus,
+                              iconSize: 38.0,
+                              boxSize: 60.0,
+                              onPress: () {
+                                setState(() {
+                                  weight = weight + 5;
                                 });
                               },
                             ),
